@@ -1,4 +1,4 @@
-# opencode-standard
+# chati-agent
 
 Переиспользуемая агентская конфигурация для [OpenCode](https://opencode.ai): правила,
 роли, процедуры и шаблоны. Без личных настроек, ключей и проектных данных.
@@ -18,7 +18,7 @@
 ## Установка
 
 ```sh
-git clone https://github.com/dmegabyte/opencode-standard ~/.config/opencode
+git clone https://github.com/dmegabyte/chati-agent ~/.config/opencode
 cd ~/.config/opencode
 ./scripts/bootstrap.sh
 ```
@@ -26,7 +26,7 @@ cd ~/.config/opencode
 Windows:
 
 ```powershell
-git clone https://github.com/dmegabyte/opencode-standard $env:USERPROFILE\.config\opencode
+git clone https://github.com/dmegabyte/chati-agent $env:USERPROFILE\.config\opencode
 cd $env:USERPROFILE\.config\opencode
 .\scripts\bootstrap.ps1
 ```
