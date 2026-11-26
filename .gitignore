@@ -1,0 +1,16 @@
+# Локальная конфигурация (создаётся bootstrap)
+/opencode.jsonc
+/AGENTS.local.md
+
+# Машинные слои
+/secrets/
+/plugin/
+/plugin-tests/
+/node_modules/
+/logs/
+/cache/
+
+# Локальные данные
+*.db
+*.db-shm
+*.db-wal
