@@ -25,7 +25,7 @@ if (-not (Test-Path "$root\AGENTS.local.md")) {
 if (-not (Select-String -Path "$root\opencode.jsonc" -Pattern '^\s*"model"\s*:' -Quiet)) {
   Write-Host ""
   Write-Host "Модель не задана. Посмотрите доступные: opencode models"
-  Write-Host "Затем добавьте '"model"' в opencode.jsonc или выберите модель в TUI через /model."
+  Write-Host "Затем добавьте строку model в opencode.jsonc или выберите модель в TUI через /model."
 }
 
 Write-Host "Next:"
