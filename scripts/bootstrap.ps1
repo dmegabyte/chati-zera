@@ -14,7 +14,9 @@ if (-not (Test-Path "$root\opencode.jsonc")) {
 }
 
 if (-not (Test-Path "$root\AGENTS.local.md")) {
-  Copy-Item "$root\templates\AGENTS.local.windows.md" "$root\AGENTS.local.md"
+  $local = (Get-Content "$root\templates\AGENTS.local.windows.md" -Raw).
+    Replace('<user>', $env:USERNAME)
+  [IO.File]::WriteAllText("$root\AGENTS.local.md", $local, [Text.UTF8Encoding]::new($false))
   Write-Host "created: AGENTS.local.md"
 } else {
   Write-Host "skip: AGENTS.local.md already exists"
