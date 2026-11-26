@@ -22,6 +22,6 @@ cat <<TXT
 
 Next:
   opencode auth login
-  opencode api get /api/agent     # expect 21 agents
+  opencode api get /api/agent     # expect 9 custom agents
   opencode run "Reply with OK"
 TXT

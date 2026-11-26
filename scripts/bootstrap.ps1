@@ -23,5 +23,5 @@ if (-not (Test-Path "$root\AGENTS.local.md")) {
 Write-Host ""
 Write-Host "Next:"
 Write-Host "  opencode auth login"
-Write-Host "  opencode api get /api/agent   # expect 21 agents"
+Write-Host "  opencode api get /api/agent   # expect 9 custom agents"
 Write-Host "  opencode run `"Reply with OK`""
