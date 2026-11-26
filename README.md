@@ -19,21 +19,35 @@
 Linux / WSL:
 
 ```sh
-git clone https://github.com/dmegabyte/chati-zera ~/.config/opencode
-cd ~/.config/opencode
-./scripts/bootstrap.sh
+curl -fsSL https://raw.githubusercontent.com/dmegabyte/chati-zera/main/install.sh | sh
 ```
 
 Windows (PowerShell):
 
 ```powershell
-git clone https://github.com/dmegabyte/chati-zera $env:USERPROFILE\.config\opencode
-cd $env:USERPROFILE\.config\opencode
-.\scripts\bootstrap.ps1
+irm https://raw.githubusercontent.com/dmegabyte/chati-zera/main/install.ps1 | iex
 ```
 
-Скрипт создаёт `opencode.jsonc` и `AGENTS.local.md` из шаблонов и подставляет пути.
-Существующие файлы он не перезаписывает.
+Одна команда ставит ЧАТИ и ZERA вместе: клонирует репозиторий в `~/.config/opencode`
+(`%USERPROFILE%\.config\opencode`), создаёт `opencode.jsonc` и `AGENTS.local.md`,
+включает режим `both`. Существующие файлы не перезаписывает; если каталог занят
+чужим репозиторием — остановится и попросит указать другой.
+
+Нужен только один слой:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/dmegabyte/chati-zera/main/install.sh | sh -s -- --mode chati
+curl -fsSL https://raw.githubusercontent.com/dmegabyte/chati-zera/main/install.sh | sh -s -- --mode zera
+```
+
+Модель можно прописать сразу:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/dmegabyte/chati-zera/main/install.sh | sh -s -- --model provider/model
+```
+
+Если репозиторий уже склонирован, достаточно `./scripts/bootstrap.sh`, а режим меняется
+через `python3 scripts/profile.py chati|zera|both`.
 
 Дальше:
 
@@ -75,7 +89,8 @@ python3 scripts/profile.py both
 | Роли | `agents/` — 2 файла | координатор и исполнитель |
 | Процедуры | `skills/` — 1 каталог | ZERA-уборка структуры |
 | Шаблоны | `templates/` | конфиг для Linux и Windows + локальный оверлей |
-| Установка | `scripts/bootstrap.*` | заполнение конфига на новой машине |
+| Установка | `install.sh`, `install.ps1` | одна команда: клон, конфиг, режим |
+| Обслуживание | `scripts/bootstrap.*`, `scripts/profile.py` | заполнение конфига и переключение режимов |
 
 ## Роли
 
@@ -161,13 +176,15 @@ cd ~/.config/opencode && git pull
 ## Структура
 
 ```text
+install.sh           установка одной командой (Linux/WSL)
+install.ps1          установка одной командой (Windows)
 AGENTS.md            конституция
 chati-style.md       стиль объяснений
 core-rules.md        кардинальное правило (режим zera)
 agents/              2 роли
 skills/              1 процедура
 templates/           шаблоны конфига и локального оверлея
-scripts/             bootstrap для Linux и Windows
+scripts/             bootstrap, переключение режимов, проверка
 docs/                архитектура, ZERA, режимы, роли, процедуры, настройка
 ```
 

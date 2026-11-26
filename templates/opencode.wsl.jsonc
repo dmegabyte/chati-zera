@@ -1,4 +1,4 @@
-// OpenCode V2 config. Запустите scripts/bootstrap.ps1 — он подставит {{CONFIG_DIR}}.
+// OpenCode V2 config. Запустите scripts/bootstrap.sh — он подставит {{CONFIG_DIR}}.
 // MCP-серверы добавьте сами: opencode mcp add <name> --global --url <url>
 {
   "$schema": "https://opencode.ai/config.json",

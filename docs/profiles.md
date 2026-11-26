@@ -18,6 +18,13 @@ python3 scripts/profile.py both
 
 Команда идемпотентна: можно вызывать сколько угодно раз, в любом порядке.
 
+Установщик сразу ставит нужный режим:
+
+```sh
+sh install.sh --mode chati
+sh install.sh --mode zera
+```
+
 ## Что именно меняется
 
 | | `both` | `chati` | `zera` |
