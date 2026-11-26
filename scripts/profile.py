@@ -55,7 +55,7 @@ def instructions(mode: dict) -> str:
     if mode["agents"]:
         files.append("chati-style.md")
     files.append("AGENTS.local.md")
-    body = ",\n".join(f'    "{{DIR}}/{f}"' for f in files)
+    body = ",\n".join('    "{{DIR}}/' + f + '"' for f in files)
     return f'"instructions": [\n{body}\n  ],'
 
 
