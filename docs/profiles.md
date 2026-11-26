@@ -22,7 +22,7 @@ python3 scripts/profile.py both
 
 | | `both` | `chati` | `zera` |
 |---|---|---|---|
-| `instructions` | `core-rules`, `ZERA.md`, `chati-style`, `AGENTS.local` | `core-rules`, `chati-style`, `AGENTS.local` | `core-rules`, `ZERA.md`, `AGENTS.local` |
+| `instructions` | `ZERA.md`, `chati-style`, `AGENTS.local` | `chati-style`, `AGENTS.local` | `core-rules`, `ZERA.md`, `AGENTS.local` |
 | `AGENTS.md` | загружается | загружается | переименован в `AGENTS.chati.md` |
 | `agents/` | включён | включён | переименован в `agents.off` |
 | `skills/` | включён | переименован в `skills.off` | включён |
@@ -30,6 +30,10 @@ python3 scripts/profile.py both
 
 Выбранный режим записывается в `.profile`. Обратное переключение возвращает каталоги
 на место — данные не удаляются.
+
+`core-rules.md` подключается только в режиме `zera`: там `AGENTS.md` отключён, и правило
+«факт без источника не факт» иначе пропало бы. В `both` и `chati` это правило уже есть
+в конституции, раздел 3.
 
 ## Что остаётся нетронутым
 

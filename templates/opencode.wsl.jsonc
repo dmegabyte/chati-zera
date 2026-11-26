@@ -6,7 +6,6 @@
   // Модель не задана: выберите свою и раскомментируйте строку.
   // "model": "<provider>/<model>",
   "instructions": [
-    "{{CONFIG_DIR}}/core-rules.md",
     "{{CONFIG_DIR}}/chati-style.md",
     "{{CONFIG_DIR}}/ZERA.md",
     "{{CONFIG_DIR}}/AGENTS.local.md"

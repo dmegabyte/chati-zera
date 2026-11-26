@@ -7,7 +7,7 @@
 | Слой | Файл | Подключается |
 |---|---|---|
 | Конституция | `AGENTS.md` | автоматически: OpenCode читает `AGENTS.md` из каталога конфига |
-| Кардинальное правило | `core-rules.md` | через `instructions` в `opencode.jsonc` |
+| Кардинальное правило | `core-rules.md` | через `instructions`, только в режиме `zera` |
 | Стиль | `chati-style.md` | через `instructions` |
 | Машинный слой | `AGENTS.local.md` | через `instructions` |
 | Роли | `agents/*.md` | автоматически из каталога `agents/` |
