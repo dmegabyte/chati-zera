@@ -14,3 +14,9 @@
 *.db
 *.db-shm
 *.db-wal
+
+# Режимы
+/agents.off/
+/skills.off/
+/AGENTS.chati.md
+/.profile

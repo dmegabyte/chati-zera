@@ -44,6 +44,27 @@ cd $env:USERPROFILE\.config\opencode
 Модель в шаблоне не задана. Посмотрите доступные командой `opencode models`, затем добавьте
 `"model": "<provider>/<model>"` в `opencode.jsonc` — или выберите модель в TUI через `/model`.
 
+## Три режима
+
+Слои независимы: можно поставить только ассистента, только ZERA или всё вместе.
+
+| Режим | Состав | Кому |
+|---|---|---|
+| `both` (по умолчанию) | правила + `ЧАТИ` + `executor` + ZERA | полный набор |
+| `chati` | правила + `ЧАТИ` + `executor`, без ZERA | нужен только ассистент |
+| `zera` | ZERA + кардинальное правило + `zera-cleanup`, без персоны | нужен принцип и уборка структуры |
+
+```sh
+python3 scripts/profile.py chati
+python3 scripts/profile.py zera
+python3 scripts/profile.py both
+```
+
+Команда меняет блок `instructions` в `opencode.jsonc` и включает нужные каталоги:
+выключенные получают суффикс `.off`, данные не удаляются. Выбранный режим хранится в `.profile`.
+
+Подробно: [docs/profiles.md](docs/profiles.md).
+
 ## Что внутри
 
 | Слой | Файлы | Зачем |
@@ -147,7 +168,7 @@ agents/              2 роли
 skills/              1 процедура
 templates/           шаблоны конфига и локального оверлея
 scripts/             bootstrap для Linux и Windows
-docs/                архитектура, ZERA, роли, процедуры, настройка
+docs/                архитектура, ZERA, режимы, роли, процедуры, настройка
 ```
 
 ## Требования
