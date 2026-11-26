@@ -49,6 +49,16 @@ curl -fsSL https://raw.githubusercontent.com/dmegabyte/chati-zera/main/install.s
 Если репозиторий уже склонирован, достаточно `./scripts/bootstrap.sh`, а режим меняется
 через `python3 scripts/profile.py chati|zera|both`.
 
+Повторный запуск установщика ничего не обновляет: он только применяет выбранный режим.
+Обновление — вручную, и в режиме `zera` сначала верните `both`, иначе `git pull` споткнётся
+о переименованные файлы:
+
+```sh
+cd ~/.config/opencode
+python3 scripts/profile.py both
+git pull
+```
+
 Дальше:
 
 1. `opencode auth login` — вход в провайдера моделей.

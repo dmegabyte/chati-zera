@@ -22,8 +22,8 @@ if (Test-Path "$Dir\.git") {
   if ($url -notmatch "chati-zera") {
     throw "В $Dir уже другой git-репозиторий ($url). Укажите другой каталог: -Dir PATH"
   }
-  Write-Host "Обновляю $Dir"
-  git -C $Dir pull --ff-only
+  Write-Host "Уже установлено: $Dir"
+  Write-Host "Обновление: cd $Dir; python scripts/profile.py both; git pull"
 } elseif ((Test-Path $Dir) -and ((Get-ChildItem $Dir -Force | Measure-Object).Count -gt 0)) {
   throw "Каталог $Dir не пуст и это не chati-zera. Укажите другой: -Dir PATH"
 } else {

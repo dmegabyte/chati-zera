@@ -47,8 +47,8 @@ if [ -d "$TARGET/.git" ]; then
   url="$(git -C "$TARGET" remote get-url origin 2>/dev/null || true)"
   case "$url" in
     *chati-zera*)
-      echo "Обновляю $TARGET"
-      git -C "$TARGET" pull --ff-only
+      echo "Уже установлено: $TARGET"
+      echo "Обновление: cd $TARGET && python3 scripts/profile.py both && git pull"
       ;;
     *)
       echo "В $TARGET уже другой git-репозиторий ($url)." >&2
