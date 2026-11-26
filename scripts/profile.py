@@ -50,8 +50,10 @@ def toggle_file(live_name: str, off_name: str, enabled: bool) -> None:
 
 def instructions(mode: dict) -> str:
     files = []
+    if not mode["agents"]:
+        files.append("core-rules.md")
     if mode["zera"]:
-        files.extend(["core-rules.md", "ZERA.md"])
+        files.append("ZERA.md")
     if mode["agents"]:
         files.append("chati-style.md")
     files.append("AGENTS.local.md")
