@@ -66,7 +66,7 @@ else
   git clone "$REPO" "$TARGET"
 fi
 
-sh "$TARGET/scripts/bootstrap.sh"
+bash "$TARGET/scripts/bootstrap.sh"
 
 if [ -n "$MODEL" ]; then
   sed -i "s|^\([[:space:]]*\)// \"model\": \"<provider>/<model>\",|\1\"model\": \"$MODEL\",|" "$TARGET/opencode.jsonc"
