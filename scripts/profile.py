@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Переключение режимов chati-agent: chati | zera | both.
+"""Переключение режимов chati-zera: chati | zera | both.
 
 - Меняет состав `instructions` в opencode.jsonc.
 - Включает и выключает каталоги `agents/` и `skills/`, переименовывая их в `*.off`.

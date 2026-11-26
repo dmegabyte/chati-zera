@@ -1,4 +1,4 @@
-# chati-agent
+# chati-zera
 
 Агентская конфигурация для [OpenCode](https://opencode.ai), в которой у агента есть границы:
 он не выдумывает факты, не раздувает контекст и не выходит за пределы задачи.
@@ -19,7 +19,7 @@
 Linux / WSL:
 
 ```sh
-git clone https://github.com/dmegabyte/chati-agent ~/.config/opencode
+git clone https://github.com/dmegabyte/chati-zera ~/.config/opencode
 cd ~/.config/opencode
 ./scripts/bootstrap.sh
 ```
@@ -27,7 +27,7 @@ cd ~/.config/opencode
 Windows (PowerShell):
 
 ```powershell
-git clone https://github.com/dmegabyte/chati-agent $env:USERPROFILE\.config\opencode
+git clone https://github.com/dmegabyte/chati-zera $env:USERPROFILE\.config\opencode
 cd $env:USERPROFILE\.config\opencode
 .\scripts\bootstrap.ps1
 ```
