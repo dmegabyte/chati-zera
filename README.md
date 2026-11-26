@@ -18,7 +18,7 @@
 ## Установка
 
 ```sh
-git clone <этот-репозиторий> ~/.config/opencode
+git clone https://github.com/dmegabyte/opencode-standard ~/.config/opencode
 cd ~/.config/opencode
 ./scripts/bootstrap.sh
 ```
@@ -26,10 +26,13 @@ cd ~/.config/opencode
 Windows:
 
 ```powershell
-git clone <этот-репозиторий> $env:USERPROFILE\.config\opencode
+git clone https://github.com/dmegabyte/opencode-standard $env:USERPROFILE\.config\opencode
 cd $env:USERPROFILE\.config\opencode
 .\scripts\bootstrap.ps1
 ```
+
+Модель по умолчанию — `opencode-go/deepseek-v4.1-flash`. Если у вас нет доступа к этому
+провайдеру, замените `model` в `opencode.jsonc` на свою.
 
 Дальше: `opencode auth login`, затем `opencode api get /api/agent` — должны появиться
 9 ролей. Скрипт не перезаписывает существующие `opencode.jsonc` и `AGENTS.local.md`.
