@@ -41,8 +41,8 @@ cd $env:USERPROFILE\.config\opencode
 2. `opencode api get /api/agent` — проверка: должно быть 2 роли плюс встроенные.
 3. `opencode run "Ответь одним словом: OK"` — сквозная проверка.
 
-Модель в шаблоне не задана: OpenCode использует выбранную вами. Если нужна конкретная —
-добавьте `model` в `opencode.jsonc`.
+Модель в шаблоне не задана. Посмотрите доступные командой `opencode models`, затем добавьте
+`"model": "<provider>/<model>"` в `opencode.jsonc` — или выберите модель в TUI через `/model`.
 
 ## Что внутри
 

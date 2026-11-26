@@ -3,6 +3,8 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "default_agent": "chati",
+  // Модель не задана: выберите свою и раскомментируйте строку.
+  // "model": "<provider>/<model>",
   "instructions": [
     "{{CONFIG_DIR}}/core-rules.md",
     "{{CONFIG_DIR}}/chati-style.md",

@@ -2,83 +2,85 @@
 name: zera-cleanup
 license: MIT
 description: >-
-  Repository restructuring under Zero Entropy Architecture (ZERA). Scans workspace root and scripts/,
-  classifies loose scripts into canonical folders (tests/, tools/, archive/), rewires configs and adds
-  an automated script hygiene test. Changes only file layout; documentation and process standards are
-  out of scope (see project-standardization).
+  Реструктуризация репозитория под Zero Entropy Architecture (ZERA): раскладывает скрипты
+  по каноническим каталогам (tests/, tools/, archive/), обновляет пути в конфигах и добавляет
+  автоматическую проверку гигиены. Меняет только структуру файлов; документация и процессные
+  стандарты — вне области (см. project-standardization).
 ---
 
-# ZERA Cleanup & Repository Restructuring Skill
+# ZERA Cleanup: реструктуризация репозитория
 
-This skill brings repository **structure** to the Zero Entropy Architecture standard: no loose
-scripts in the root, no dead `scripts/` folder, hygiene enforced by a test.
+Скилл приводит **структуру** репозитория к стандарту Zero Entropy Architecture: без скриптов
+в корне, без мёртвого каталога `scripts/`, с гигиеной, закреплённой тестом.
 
-## Scope
+## Область
 
-- In scope: file layout, moves, path rewiring in build/test/CI configs, hygiene test.
-- Out of scope: documentation, journals, `AGENTS.md` content, process standards.
-  Navigation and documentation order are handled by `project-standardization`.
-- If a request is about documents rather than files, stop and hand it to `project-standardization`.
+- Входит: расположение файлов, переносы, правка путей в конфигах сборки, тестов и CI, тест гигиены.
+- Не входит: документация, журналы, содержимое `AGENTS.md`, процессные стандарты.
+  Навигацией и порядком документов занимается `project-standardization`.
+- Если просьба про документы, а не про файлы, остановись и передай задачу `project-standardization`.
 
-## Primary Invariants
+## Основные инварианты
 
-1. **Safety First:** Never perform blind file deletion (`rm -rf`). Always inspect Git status,
-   classify files systematically, and verify with automated hygiene tests.
-2. **Timeless & Clean AGENTS.md (CRITICAL RULE):**
-   `AGENTS.md` is a permanent architectural constitution, NOT an ephemeral status report or file counter.
-   - **STRICTLY PROHIBITED:** Never write ephemeral quantities (e.g. "32 scripts in scripts/"),
-     timestamps, or temporary file listings into `AGENTS.md`.
-   - **MANDATORY AUDIT:** Before finishing, audit the target `AGENTS.md`. If any prior agent wrote file
-     counters or temporary workarounds into it, remove them and keep invariant principles.
-     Concrete file tracking belongs to automated tests, never to markdown instructions.
+1. **Безопасность:** никогда не удаляй вслепую (`rm -rf`). Проверяй `git status`,
+   классифицируй файлы системно и подтверждай результат тестом гигиены.
+2. **Чистый и вневременной `AGENTS.md` (критическое правило):**
+   `AGENTS.md` — постоянная архитектурная конституция, а не отчёт о состоянии и не счётчик файлов.
+   - **Строго запрещено:** писать в него эфемерные числа («32 скрипта в scripts/»), даты
+     и временные списки файлов.
+   - **Обязательный аудит:** перед завершением проверь целевой `AGENTS.md`. Если предыдущий агент
+     оставил там счётчики файлов или временные обходы, удали их и оставь инвариантные принципы.
+     Учёт конкретных файлов — задача автоматических тестов, а не markdown-инструкций.
 
-## Autonomous 6-Step Execution Protocol
+## Протокол выполнения из 6 шагов
 
-Use when instructed to "clean up repository structure", "разложить скрипты", or "run zera-cleanup".
+Применяй по просьбе «разложить скрипты», «убрать хаос в структуре» или «запустить zera-cleanup».
 
-### Step 1: Git Status & Safety Checkpoint
+### Шаг 1. Состояние Git и безопасная точка возврата
 
-1. Run `git status --short` and read the result.
-2. If uncommitted work exists, do **not** commit on your own. List the changed files, propose a
-   checkpoint commit with an explicit path list and message, and wait for confirmation.
-3. Never use `git add .` or `git add -A`: stage only the paths you name.
+1. Выполни `git status --short` и прочитай результат.
+2. Если есть незакоммиченные изменения, **не коммить сам**. Перечисли изменённые файлы, предложи
+   коммит-чекпойнт с явным списком путей и сообщением и дождись подтверждения.
+3. Никогда не используй `git add .` или `git add -A`: добавляй только те пути, которые назвал.
 
-### Step 2: Script Inventory & Semantic Classification
+### Шаг 2. Инвентаризация и классификация скриптов
 
-Inspect loose files in the workspace root and `scripts/` (`.py`, `.sh`, `.ts`, `.tsx`, `.mjs`, `.cjs`).
-Categorize each file into one of four canonical destinations:
+Проверь свободные файлы в корне и в `scripts/` (`.py`, `.sh`, `.ts`, `.tsx`, `.mjs`, `.cjs`).
+Отнеси каждый к одному из четырёх канонических мест:
 
-1. **Tests (`tests/browser/`, `tests/regression/`, `tests/unit/`):** files containing `test`, `smoke`,
-   `regression`, `check`, `spec`, `review`, or browser test runners.
-2. **Tools & Infrastructure (`tools/`):** maintenance runners, CI helpers, doc validators, sync daemons.
-3. **Core Package Modules (`<package_dir>/`):** domain logic that belongs inside the application package.
-4. **Obsolete / Dead Spikes (`archive/legacy_scripts/`):** throwaway scripts and historical benchmarks
-   that are no longer referenced.
+1. **Тесты (`tests/browser/`, `tests/regression/`, `tests/unit/`):** файлы с `test`, `smoke`,
+   `regression`, `check`, `spec`, `review` или запуском браузерных тестов.
+2. **Инструменты (`tools/`):** обслуживающие раннеры, помощники CI, валидаторы документации,
+   скрипты синхронизации.
+3. **Модули пакета (`<package_dir>/`):** доменная логика, которая должна жить внутри приложения.
+4. **Устаревшее (`archive/legacy_scripts/`):** разовые скрипты и исторические бенчмарки,
+   на которые больше нет ссылок.
 
-### Step 3: Migration & Restructuring
+### Шаг 3. Перенос и реструктуризация
 
-1. Create canonical target directories as needed: `mkdir -p tests/browser tests/regression tools`.
-2. Move files with `mv` or `git mv`.
-3. If `scripts/` becomes completely empty, remove it with `rmdir`.
+1. Создай нужные каталоги: `mkdir -p tests/browser tests/regression tools`.
+2. Переноси файлы через `mv` или `git mv`.
+3. Если `scripts/` опустел полностью, удали его через `rmdir`.
 
-### Step 4: Configuration & Reference Rewiring
+### Шаг 4. Обновление конфигов и ссылок
 
-1. Check `package.json`, `Makefile`, `Dockerfile`, crontab and CI configs for references to old paths.
-2. Update the paths to the new canonical locations.
-3. Run the updated commands to verify they work.
+1. Проверь `package.json`, `Makefile`, `Dockerfile`, crontab и конфиги CI на ссылки к старым путям.
+2. Обнови пути на новые канонические места.
+3. Запусти обновлённые команды и убедись, что они работают.
 
-### Step 5: Generate Automated Hygiene Gate
+### Шаг 5. Автоматический тест гигиены
 
-Add a test that permanently locks the layout:
-- **Python / Generic:** create `tests/test_script_hygiene.py` asserting:
-  - the `scripts/` directory does not exist (or matches a strict allowed set);
-  - no loose `.py`, `.sh`, `.js` files in the repository root.
-- Run the hygiene test and confirm it passes.
+Добавь тест, который закрепляет структуру навсегда:
+- **Python / общий случай:** создай `tests/test_script_hygiene.py` с проверками:
+  - каталога `scripts/` не существует (или он соответствует строгому разрешённому набору);
+  - в корне репозитория нет свободных `.py`, `.sh`, `.js`.
+- Запусти тест и убедись, что он проходит.
 
-### Step 6: Report and Scoped Commit
+### Шаг 6. Отчёт и коммит в рамках scope
 
-1. Show `git status --short` and the list of moves.
-2. Stage only the moved files and updated configs, with an explicit path list.
-3. Propose an atomic commit message such as
-   `refactor(zera): move loose scripts to tests/ and tools/, add hygiene test`.
-4. Commit only after confirmation from the user; then report the verified test result and exit code.
+1. Покажи `git status --short` и список переносов.
+2. Добавь в индекс только перенесённые файлы и обновлённые конфиги, явным списком путей.
+3. Предложи атомарное сообщение коммита, например
+   `refactor(zera): перенести скрипты в tests/ и tools/, добавить тест гигиены`.
+4. Комить только после подтверждения пользователя; затем отчитайся проверенным результатом
+   теста и exit code.

@@ -18,6 +18,12 @@ else
   echo "skip: AGENTS.local.md already exists"
 fi
 
+if ! grep -q '^[[:space:]]*"model"' "$root/opencode.jsonc"; then
+  echo
+  echo "Модель не задана. Посмотрите доступные: opencode models"
+  echo "Затем добавьте \"model\" в opencode.jsonc или выберите модель в TUI через /model."
+fi
+
 cat <<TXT
 
 Next:

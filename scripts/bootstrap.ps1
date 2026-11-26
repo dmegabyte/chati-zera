@@ -22,7 +22,12 @@ if (-not (Test-Path "$root\AGENTS.local.md")) {
   Write-Host "skip: AGENTS.local.md already exists"
 }
 
-Write-Host ""
+if (-not (Select-String -Path "$root\opencode.jsonc" -Pattern '"model"' -Quiet)) {
+  Write-Host ""
+  Write-Host "Модель не задана. Посмотрите доступные: opencode models"
+  Write-Host "Затем добавьте '"model"' в opencode.jsonc или выберите модель в TUI через /model."
+}
+
 Write-Host "Next:"
 Write-Host "  opencode auth login"
 Write-Host "  opencode api get /api/agent   # должны появиться ваши роли"
