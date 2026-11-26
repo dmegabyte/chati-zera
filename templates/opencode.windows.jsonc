@@ -2,8 +2,7 @@
 // MCP-серверы добавьте сами: opencode mcp add <name> --global --url <url>
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "opencode-go/deepseek-v4.1-flash",
-  "default_agent": "fast-chati",
+  "default_agent": "chati",
   "instructions": [
     "{{CONFIG_DIR}}/core-rules.md",
     "{{CONFIG_DIR}}/chati-style.md",

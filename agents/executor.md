@@ -1,21 +1,11 @@
 ---
 description: Executor — основной исполнитель: самостоятельно анализирует ограниченную задачу, пишет код и запускает разрешённые локальные проверки.
 mode: subagent
-# ══════════════════════════
-# ⚡ МОДЕЛЬ: openai/gpt-6.1-terra
-# ══════════════════════════
-model: openai/gpt-6.1-terra
 permission:
   question: deny
   task: deny
-  todowrite: deny
-  memory_search: deny
-  notebooklm-mcp_*: deny
-  context7_*: deny
   webfetch: deny
   websearch: deny
-  github_*: deny
-  eval: deny
   edit: allow
   bash: allow
   read: allow
